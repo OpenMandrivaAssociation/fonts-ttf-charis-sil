@@ -1,24 +1,38 @@
 %define pkgname CharisSIL
 
-Summary: Unicode serif font family for tipography
-Name: fonts-ttf-charis-sil
-Version: 4.106
-Release: %mkrel 1
-License: OFL
-Group: System/Fonts/True type
-URL: http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=CharisSILfont
-Source0: %{pkgname}%{version}.zip
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildArch: noarch
-BuildRequires: freetype-tools
+Summary:	Unicode serif font family for typography
+Name:		fonts-ttf-charis-sil
+Version:	4.110
+Release:	%mkrel 1
+License:	OFL
+Group:		System/Fonts/True type
+URL:		http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=CharisSILfont
+Source0:	%{pkgname}-%{version}.zip
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildArch:	noarch
+BuildRequires:	freetype-tools
+BuildRequires:	dos2unix
 
 %description
-Charis is similar to Bitstream Charter, one of the first fonts designed specifically for laser printers. It is highly readable and holds up well in less-than-ideal reproduction environments. It also has a full set of styles - regular, italic, bold, bold italic - and so is more useful in general publishing than Doulos SIL. Charis is a serif, proportionally-spaced font optimized for readability in long printed documents.
-The goal for this product was to provide a single Unicode-based font family that would contain a comprehensive inventory of glyphs needed for almost any Roman- or Cyrillic-based writing system, whether used for phonetic or orthographic needs. In addition, there is provision for other characters and symbols useful to linguists. This font makes use of state-of-the-art font technologies to support complex typographic issues, such as the need to position arbitrary combinations of base glyphs and diacritics optimally. 
+Charis is similar to Bitstream Charter, one of the first fonts designed
+specifically for laser printers. It is highly readable and holds up well
+in less-than-ideal reproduction environments. It also has a full set of styles
+- regular, italic, bold, bold italic - and so is more useful in general
+publishing than Doulos SIL. Charis is a serif, proportionally-spaced font
+optimized for readability in long printed documents.
+
+The goal for this product was to provide a single Unicode-based font family
+that would contain a comprehensive inventory of glyphs needed for almost any
+Roman- or Cyrillic-based writing system, whether used for phonetic
+or orthographic needs. In addition, there is provision for other characters
+and symbols useful to linguists. This font makes use of state-of-the-art font
+technologies to support complex typographic issues, such as the need
+to position arbitrary combinations of base glyphs and diacritics optimally. 
 
 
 %prep
-%setup -q -n %{pkgname}
+%setup -q -n %{pkgname}-%{version}
+dos2unix *.txt
 
 %build
 
@@ -28,7 +42,7 @@ The goal for this product was to provide a single Unicode-based font family that
 %__mkdir_p %{buildroot}%{_xfontdir}/TTF/charis-sil
 
 %__install -m 644 *.ttf %{buildroot}%{_xfontdir}/TTF/charis-sil
-ttmkfdir %{buildroot}%{_xfontdir}/TTF/charis-sil > %{buildroot}%{_xfontdir}/TTF/charis-sil/fonts.dir
+ttmkfdir %{buildroot}%{_xfontdir}/TTF/charis-sil -o %{buildroot}%{_xfontdir}/TTF/charis-sil/fonts.dir
 %__ln_s fonts.dir %{buildroot}%{_xfontdir}/TTF/charis-sil/fonts.scale
 
 %__mkdir_p %{buildroot}%_sysconfdir/X11/fontpath.d/
@@ -46,6 +60,3 @@ ttmkfdir %{buildroot}%{_xfontdir}/TTF/charis-sil > %{buildroot}%{_xfontdir}/TTF/
 %verify(not mtime) %{_datadir}/fonts/TTF/charis-sil/fonts.dir
 %{_xfontdir}/TTF/charis-sil/fonts.scale
 %{_sysconfdir}/X11/fontpath.d/ttf-charis-sil:pri=50
-
-
-
