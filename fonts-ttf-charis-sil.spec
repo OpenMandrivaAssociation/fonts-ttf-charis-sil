@@ -3,7 +3,7 @@
 Summary:	Unicode serif font family for typography
 Name:		fonts-ttf-charis-sil
 Version:	4.110
-Release:	%mkrel 1
+Release:	2
 License:	OFL
 Group:		System/Fonts/True type
 URL:		http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=CharisSILfont
