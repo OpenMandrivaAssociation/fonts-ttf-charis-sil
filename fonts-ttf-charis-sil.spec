@@ -6,7 +6,7 @@ Version:	4.110
 Release:	2
 License:	OFL
 Group:		System/Fonts/True type
-URL:		http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=CharisSILfont
+URL:		https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=CharisSILfont
 Source0:	%{pkgname}-%{version}.zip
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch:	noarch
